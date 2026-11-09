@@ -1,0 +1,14 @@
+django
+djangorestframework
+django-cors-headers
+djangorestframework-simplejwt
+psycopg2-binary
+python-dotenv
+numpy
+pandas
+scikit-learn
+pillow
+ipykernel
+torch
+torchvision
+matplotlib
