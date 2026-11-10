@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from .models import Event, EventGuest
 
@@ -9,19 +8,33 @@ class EventAdmin(admin.ModelAdmin):
         'title',
         'organizer',
         'start_datetime',
-        'end_datetime',
         'view_permission',
         'upload_permission',
+        'require_approval',
         'created_at',
     )
-
-    search_fields = ('title', 'organizer__username')
 
     list_filter = (
         'view_permission',
         'upload_permission',
+        'require_approval',
         'start_datetime',
     )
+
+    search_fields = (
+        'title',
+        'description',
+        'organizer__username',
+        'organizer__email',
+    )
+
+    readonly_fields = (
+        'public_id',
+        'created_at',
+        'updated_at',
+    )
+
+    ordering = ('-start_datetime',)
 
 
 @admin.register(EventGuest)
@@ -29,11 +42,21 @@ class EventGuestAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'event',
-        'phone_number',
-        'email',
         'created_at',
     )
 
-    search_fields = ('name', 'phone_number', 'email')
-    list_filter = ('event',)
+    list_filter = (
+        'event',
+        'created_at',
+    )
 
+    search_fields = (
+        'name',
+        'event__title',
+    )
+
+    readonly_fields = (
+        'created_at',
+    )
+
+    ordering = ('-created_at',)
