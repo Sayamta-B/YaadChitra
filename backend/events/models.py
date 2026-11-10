@@ -27,8 +27,8 @@ class Event(models.Model):
     end_datetime = models.DateTimeField(null=True, blank=True)
 
     upload_expiry = models.DateTimeField(null=True, blank=True)
-    view_permission = models.CharField(max_length=20, choices=ViewPermission.choices, default=ViewPermission.PUBLIC)
-    upload_permission = models.CharField(max_length=20, choices=UploadPermission.choices, default=UploadPermission.DISABLED)
+    view_permission = models.CharField(max_length=20, choices=ViewPermission.choices, default=ViewPermission.LINK)
+    upload_permission = models.CharField(max_length=20, choices=UploadPermission.choices, default=UploadPermission.LINK)
     require_approval = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
