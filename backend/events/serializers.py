@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Event
+from .models import Event, EventGuest
 
 
 class EventSerializer(serializers.ModelSerializer):
@@ -29,3 +29,9 @@ class EventSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'title':{'required':True},
         }
+
+class EventGuestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EventGuest
+        fields = ['id', 'name', 'created_at']
+        read_only_fields = ['id', 'created_at']
