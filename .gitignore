@@ -10,3 +10,10 @@ venv/
 
 # Uploaded media
 backend/media/
+
+# IDE
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
